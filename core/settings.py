@@ -1,18 +1,23 @@
-
 from pathlib import Path
+import os
+import environ
+import pymysql
+pymysql.install_as_MySQLdb()
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+env = environ.Env()
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
+# Retrieve the secret key
+SECRET_KEY = env('SECRET_KEY', default=None)  # or provide a default value
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 
+if not SECRET_KEY:
+    raise ValueError("The SECRET_KEY environment variable is not set!")
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool('DEBUG', default=False)  # Handle DEBUG appropriately
+
+
 
 ALLOWED_HOSTS = []
 
