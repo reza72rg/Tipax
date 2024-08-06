@@ -17,8 +17,8 @@ if not SECRET_KEY:
 
 DEBUG = env.bool('DEBUG', default=False)  # Handle DEBUG appropriately
 
-
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS setting
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
 
 
 # Application definition
@@ -48,7 +48,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
