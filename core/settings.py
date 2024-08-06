@@ -18,7 +18,6 @@ if not SECRET_KEY:
 DEBUG = env.bool('DEBUG', default=False)  # Handle DEBUG appropriately
 
 
-
 ALLOWED_HOSTS = []
 
 
@@ -31,6 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
